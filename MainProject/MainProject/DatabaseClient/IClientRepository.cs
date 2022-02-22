@@ -12,13 +12,16 @@ namespace MainProject.DatabaseClient
         [Get("")]
         Task<List<ClientDto>> GetAllAsync(CancellationToken cancellationToken = default);
 
+        [Get("")]
+        Task<ClientDto> FindById([Path] long id, CancellationToken cancellationToken = default);
+
         [Post("")]
-        Task<int> CreateAsync([Body] HttpContent context, CancellationToken cancellationToken = default);
+        Task<long> CreateAsync([Body] HttpContent context, CancellationToken cancellationToken = default);
 
         [Patch("")]
         Task UpdateAsync([Body] HttpContent context, CancellationToken cancellationToken = default);
 
         [Delete("/{id}")]
-        Task DeleteAsync([Path]int id, CancellationToken cancellationToken = default);
+        Task DeleteAsync([Path]long id, CancellationToken cancellationToken = default);
     }
 }

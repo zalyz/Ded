@@ -8,10 +8,12 @@ namespace MainProject.Interfaces
     {
         Task<List<ClientDto>> GetAllAsync();
 
-        Task<int> CreateAsync(ClientDto client);
+        Task<ClientDto> FindByIdAsync(long id);
+
+        Task<long> CreateAsync(ClientDto client);
 
         Task UpdateAsync(ClientDto client);
 
-        Task DeleteAsync(int id);
+        Task DeleteAsync(long id);
     }
 }

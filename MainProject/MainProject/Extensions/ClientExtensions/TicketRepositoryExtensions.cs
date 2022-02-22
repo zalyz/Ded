@@ -8,7 +8,7 @@ namespace MainProject.Extensions.ClientExtensions
 {
     public static class TicketRepositoryExtensions
     {
-        public static Task<int> CreateAsync(this ITicketRepository ticketRepository, TicketDto ticket)
+        public static Task<long> CreateAsync(this ITicketRepository ticketRepository, TicketDto ticket)
         {
             var form = GetHttpContent(ticket);
             return ticketRepository.CreateAsync(form);

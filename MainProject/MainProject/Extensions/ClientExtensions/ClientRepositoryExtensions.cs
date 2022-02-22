@@ -7,7 +7,7 @@ namespace MainProject.Extensions.ClientExtensions
 {
     public static class ClientRepositoryExtensions
     {
-        public static Task<int> CreateAsync(this IClientRepository clientRepository, ClientDto client)
+        public static Task<long> CreateAsync(this IClientRepository clientRepository, ClientDto client)
         {
             var form = GetHttpContent(client);
             return clientRepository.CreateAsync(form);

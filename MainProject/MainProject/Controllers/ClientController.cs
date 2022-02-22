@@ -27,6 +27,19 @@ namespace MainProject.Controllers
             return Ok(await _clientService.GetAllAsync());
         }
 
+        [HttpGet("/{id}")]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(typeof(ClientDto), StatusCodes.Status200OK)]
+        public async Task<IActionResult> Get([FromRoute]long id)
+        {
+            if (id <= 0)
+            {
+                return BadRequest();
+            }
+
+            return Ok(await _clientService.FindByIdAsync(id));
+        }
+
         [HttpPost]
         [ProducesResponseType(typeof(int), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -39,6 +52,8 @@ namespace MainProject.Controllers
 
             var client = new ClientDto
             {
+                FullName = clientModel.FullName,
+                PassportNumber = clientModel.PassportNumber,
             };
             var id = await _clientService.CreateAsync(client);
             return Ok(id);
@@ -56,6 +71,9 @@ namespace MainProject.Controllers
 
             var client = new ClientDto
             {
+                Id = clientModel.Id,
+                FullName = clientModel.FullName,
+                PassportNumber = clientModel.PassportNumber,
             };
             await _clientService.UpdateAsync(client);
             return Ok();
@@ -64,7 +82,7 @@ namespace MainProject.Controllers
         [HttpDelete]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status200OK)]
-        public async Task<IActionResult> Delete(int id)
+        public async Task<IActionResult> Delete(long id)
         {
             if (id <= 0)
             {

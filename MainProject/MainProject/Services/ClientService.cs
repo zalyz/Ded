@@ -16,14 +16,19 @@ namespace MainProject.Services
             _clientRepository = clientRepository;
         }
 
-        public Task<int> CreateAsync(ClientDto client)
+        public Task<long> CreateAsync(ClientDto client)
         {
             return _clientRepository.CreateAsync(client);
         }
 
-        public Task DeleteAsync(int id)
+        public Task DeleteAsync(long id)
         {
             return _clientRepository.DeleteAsync(id);
+        }
+
+        public Task<ClientDto> FindByIdAsync(long id)
+        {
+            return _clientRepository.FindByIdAsync(id);
         }
 
         public Task<List<ClientDto>> GetAllAsync()

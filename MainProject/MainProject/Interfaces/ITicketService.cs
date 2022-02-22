@@ -8,10 +8,12 @@ namespace MainProject.Interfaces
     {
         Task<List<TicketDto>> GetAllAsync();
 
-        Task<int> CreateAsync(TicketDto ticket);
+        Task<TicketDto> FindByIdAsync(long id);
+
+        Task<long> CreateAsync(TicketDto ticket);
 
         Task UpdateAsync(TicketDto ticket);
 
-        Task DeleteAsync(int id);
+        Task DeleteAsync(long id);
     }
 }

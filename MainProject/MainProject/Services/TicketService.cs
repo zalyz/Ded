@@ -16,14 +16,19 @@ namespace MainProject.Services
             _ticketRepository = ticketRepository;
         }
 
-        public Task<int> CreateAsync(TicketDto ticket)
+        public Task<long> CreateAsync(TicketDto ticket)
         {
             return _ticketRepository.CreateAsync(ticket);
         }
 
-        public Task DeleteAsync(int id)
+        public Task DeleteAsync(long id)
         {
             return _ticketRepository.DeleteAsync(id);
+        }
+
+        public Task<TicketDto> FindByIdAsync(long id)
+        {
+            return _ticketRepository.FindByIdAsync(id);
         }
 
         public Task<List<TicketDto>> GetAllAsync()

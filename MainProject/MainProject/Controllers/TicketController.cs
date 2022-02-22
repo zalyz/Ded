@@ -27,6 +27,19 @@ namespace MainProject.Controllers
             return Ok(await _ticketService.GetAllAsync());
         }
 
+        [HttpGet("/{id}")]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(typeof(TicketDto), StatusCodes.Status200OK)]
+        public async Task<IActionResult> Get([FromRoute]long id)
+        {
+            if (id <= 0)
+            {
+                return BadRequest();
+            }
+
+            return Ok(await _ticketService.FindByIdAsync(id));
+        }
+
         [HttpPost]
         [ProducesResponseType(typeof(int), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -39,6 +52,10 @@ namespace MainProject.Controllers
 
             var ticket = new TicketDto
             {
+                FlightNumber = ticketModel.FlightNumber,
+                DepartureDate = ticketModel.DepartureDate,
+                Price = ticketModel.Price,
+                ClientId = ticketModel.ClientId,
             };
             var id = await _ticketService.CreateAsync(ticket);
             return Ok(id);
@@ -56,6 +73,11 @@ namespace MainProject.Controllers
 
             var ticket = new TicketDto
             {
+                Id = ticketModel.Id,
+                FlightNumber = ticketModel.FlightNumber,
+                DepartureDate = ticketModel.DepartureDate,
+                Price = ticketModel.Price,
+                ClientId = ticketModel.ClientId,
             };
             await _ticketService.UpdateAsync(ticket);
             return Ok();
@@ -64,7 +86,7 @@ namespace MainProject.Controllers
         [HttpDelete]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public async Task<IActionResult> Delete(int id)
+        public async Task<IActionResult> Delete(long id)
         {
             if (id <= 0)
             {
