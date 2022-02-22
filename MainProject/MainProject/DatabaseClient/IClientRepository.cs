@@ -9,19 +9,19 @@ namespace MainProject.DatabaseClient
 {
     public interface IClientRepository
     {
-        [Get("")]
+        [Get("/all")]
         Task<List<ClientDto>> GetAllAsync(CancellationToken cancellationToken = default);
 
-        [Get("")]
-        Task<ClientDto> FindById([Path] long id, CancellationToken cancellationToken = default);
+        [Get("/find/{id}")]
+        Task<ClientDto> FindByIdAsync([Path] long id, CancellationToken cancellationToken = default);
 
-        [Post("")]
+        [Post("/save")]
         Task<long> CreateAsync([Body] HttpContent context, CancellationToken cancellationToken = default);
 
-        [Patch("")]
+        [Patch("/update")]
         Task UpdateAsync([Body] HttpContent context, CancellationToken cancellationToken = default);
 
-        [Delete("/{id}")]
+        [Delete("/delete/{id}")]
         Task DeleteAsync([Path]long id, CancellationToken cancellationToken = default);
     }
 }

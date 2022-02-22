@@ -28,7 +28,7 @@ namespace MainProject.Controllers
             return Ok(await _clientService.GetAllAsync());
         }
 
-        [HttpGet("/{id}")]
+        [HttpGet("/api/client/{id}")]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(ClientDto), StatusCodes.Status200OK)]
         public async Task<IActionResult> Get([FromRoute]long id)
@@ -41,7 +41,7 @@ namespace MainProject.Controllers
             return Ok(await _clientService.FindByIdAsync(id));
         }
 
-        [HttpGet("/filter")]
+        [HttpGet("/api/client/filter")]
         [ProducesResponseType(typeof(IEnumerable<ClientDto>), StatusCodes.Status200OK)]
         public async Task<IActionResult> Filter([FromQuery] string passportNumber, [FromQuery] string fullName)
         {

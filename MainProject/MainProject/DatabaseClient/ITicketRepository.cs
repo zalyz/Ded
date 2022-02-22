@@ -9,19 +9,19 @@ namespace MainProject.DatabaseClient
 {
     public interface ITicketRepository
     {
-        [Get("")]
+        [Get("/all")]
         Task<List<TicketDto>> GetAllAsync(CancellationToken cancellationToken = default);
 
-        [Get("")]
+        [Get("/find/{id}")]
         Task<TicketDto> FindByIdAsync([Path] long id, CancellationToken cancellationToken = default);
 
-        [Post("")]
+        [Post("/save")]
         Task<long> CreateAsync([Body] HttpContent context, CancellationToken cancellationToken = default);
 
-        [Patch("")]
+        [Patch("/update")]
         Task UpdateAsync([Body] HttpContent context, CancellationToken cancellationToken = default);
 
-        [Delete("/{id}")]
+        [Delete("/delete/{id}")]
         Task DeleteAsync([Path] long id, CancellationToken cancellationToken = default);
     }
 }

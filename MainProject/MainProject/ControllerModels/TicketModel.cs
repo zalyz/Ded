@@ -6,9 +6,6 @@ namespace MainProject.ControllerModels
     public class TicketModel
     {
         [Required]
-        public long Id { get; set; }
-
-        [Required]
         public long FlightNumber { get; set; }
 
         [Required]

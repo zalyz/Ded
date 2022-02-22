@@ -29,7 +29,7 @@ namespace MainProject.Controllers
             return Ok(await _ticketService.GetAllAsync());
         }
 
-        [HttpGet("/{id}")]
+        [HttpGet("/api/ticket/{id}")]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(TicketDto), StatusCodes.Status200OK)]
         public async Task<IActionResult> Get([FromRoute]long id)
@@ -42,7 +42,7 @@ namespace MainProject.Controllers
             return Ok(await _ticketService.FindByIdAsync(id));
         }
 
-        [HttpGet("/filter")]
+        [HttpGet("/api/ticket/filter")]
         [ProducesResponseType(typeof(IEnumerable<TicketDto>), StatusCodes.Status200OK)]
         public async Task<IActionResult> Filter([FromQuery]long? flightNumber, [FromQuery] DateTime? departureDateTime)
         {
