@@ -1,0 +1,36 @@
+.form-wrapper {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding: 10px;
+  border: 1px lightgray solid;
+  box-shadow: 0 0 10px lightgray;
+  border-radius: 5px;
+  align-items: center;
+}
+
+.input-block {
+  min-width: 350px;
+  display: flex;
+  justify-content: space-between;
+}
+
+input {
+  border: 1px solid #232121;
+  border-radius: 3px;
+  box-shadow: 0 0 5px lightgray;
+  outline: none;
+}
+
+.form-submit {
+  border: 3px solid lightgray;
+  border-radius: 5px;
+}

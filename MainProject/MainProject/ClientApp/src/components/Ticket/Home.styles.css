@@ -1,0 +1,43 @@
+.home-wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  margin-bottom: 50px;
+}
+
+.home__wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.home__ticket {
+  width: 90%;
+  border: 3px solid lightgray;
+  border-radius: 5px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  gap: 40px;
+}
+
+p {
+  margin: 0;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.home-ticket__button-wrapper {
+  float: right;
+  display: flex;
+  gap: 20px;
+}
+
+.home__create-ticket {
+  align-self: center;
+  border: 3px solid lightgray;
+  border-radius: 4px;
+  font-weight: bold;
+  font-size: 18px;
+}
