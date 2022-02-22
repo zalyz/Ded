@@ -41,4 +41,8 @@ public class TicketService {
         repository.deleteById(id);
     }
 
+    public void update(TicketDto dto){
+        repository.save(mapper.mapToTicket(dto));
+    }
+
 }

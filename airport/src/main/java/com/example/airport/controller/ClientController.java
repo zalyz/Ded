@@ -25,12 +25,17 @@ public class ClientController {
     }
 
     @PostMapping("/save")
-    public ClientDto save(@RequestBody ClientDto dto){
+    public Long save(@RequestBody ClientDto dto){
         return service.save(dto);
     }
 
     @DeleteMapping("/delete/{id}")
     public void delete(@PathVariable(name = "id") Long id){
         service.deleteById(id);
+    }
+
+    @PutMapping("/update")
+    public void update(@RequestBody ClientDto dto){
+        service.update(dto);
     }
 }

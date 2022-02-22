@@ -7,7 +7,6 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
 import java.time.LocalDate;
 
 @Data
@@ -19,8 +18,7 @@ public class Ticket {
     @Id
     private Long id;
     private Long flightNumber;
-    @OneToOne
-    private Client client;
+    private Long clientId;
     private LocalDate departureDate;
     private Integer price;
 }

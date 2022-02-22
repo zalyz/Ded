@@ -33,4 +33,9 @@ public class TicketController {
     public void deleteById(@PathVariable(name = "id") Long id){
         service.deleteById(id);
     }
+
+    @PutMapping("/update")
+    public void update(@RequestBody TicketDto dto){
+        service.update(dto);
+    }
 }

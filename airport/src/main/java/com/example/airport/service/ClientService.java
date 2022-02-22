@@ -33,10 +33,14 @@ public class ClientService {
     }
 
 
-    public ClientDto save(ClientDto dto) {
+    public Long save(ClientDto dto) {
         Client entity = mapper.mapToClient(dto);
         entity = clientRepository.save(entity);
-        return mapper.mapToClientDto(entity);
+        return entity.getId();
+    }
+
+    public void update(ClientDto dto){
+        clientRepository.save(mapper.mapToClient(dto));
     }
 
     public void deleteById(Long id) {
