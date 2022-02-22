@@ -18,7 +18,7 @@ namespace MainProject.DatabaseClient
         [Post("/save")]
         Task<long> CreateAsync([Body] HttpContent context, CancellationToken cancellationToken = default);
 
-        [Patch("/update")]
+        [Put("/update")]
         Task UpdateAsync([Body] HttpContent context, CancellationToken cancellationToken = default);
 
         [Delete("/delete/{id}")]
