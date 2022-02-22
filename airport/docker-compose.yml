@@ -11,7 +11,7 @@ services:
     ports:
       - "8080:8080"
     environment:
-      - DATASOURCE_URL=jdbc:postgresql://localhost:5432/db
+      - DATASOURCE_URL=jdbc:postgresql://localhost:5432/postgres
       - SCHEMA=airport
       - USERNAME=postgres
       - PASSWORD=root
@@ -19,7 +19,7 @@ services:
     image: 'postgres:latest'
     container_name: db
     ports:
-      - "5431:5432"
+      - "5432:5432"
     environment:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=root
