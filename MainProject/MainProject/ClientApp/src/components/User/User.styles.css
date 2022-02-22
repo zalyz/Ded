@@ -1,0 +1,15 @@
+.user {
+  width: 60%;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 10px 0 10px;
+  border: 2px solid lightgray;
+  border-radius: 5px;
+  align-items: center;
+}
+
+.user-buttons__wrapper {
+  float: right;
+  display: flex;
+  gap: 20px;
+}
