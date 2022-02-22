@@ -1,0 +1,31 @@
+.update-ticket__wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.update-ticket__form {
+  display: flex;
+  gap: 15px;
+  flex-direction: column;
+  align-items: center;
+  border: 1px lightgray solid;
+  border-radius: 5px;
+  padding: 10px;
+  box-shadow: 0 0 10px lightgray;
+}
+
+input {
+  border: 1px solid #232121;
+  border-radius: 3px;
+  box-shadow: 0 0 5px lightgray;
+  outline: none;
+}
+
+.form__button{
+  border: 3px solid lightgray;
+  border-radius: 5px;
+  font-weight: bold;
+  font-size: 18px;
+}
