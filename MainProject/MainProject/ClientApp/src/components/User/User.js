@@ -1,12 +1,14 @@
 import React, {useContext} from 'react';
 import './User.styles.css'
 import {MyContext} from "../../App";
+import {useHistory} from "react-router-dom";
 
 const User = ({Id, FullName, PassportNumber}) => {
   const {users, setUsers} = useContext(MyContext)
+  const history = useHistory()
 
   function clickUpdateButtonHandler() {
-
+    history.push(`/update-user/${Id}`)
   }
 
   function clickRemoveButtonHandler() {

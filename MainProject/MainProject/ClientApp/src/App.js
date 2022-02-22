@@ -21,6 +21,7 @@ import CreateTicket from "./components/CreateTicket/CreateTicket";
 import UpdateTicket from "./components/UpdateTicket/UpdateTicket";
 import Users from "./components/Users/Users";
 import CreateUser from "./components/CreateUser/CreateUser";
+import UpdateUser from "./components/UpdateUser/UpdateUser";
 
 export const MyContext = React.createContext(null);
 
@@ -130,6 +131,7 @@ const App = () => {
           <Route exact path='/update-ticket/:id' component={UpdateTicket} />
           <Route exact path='/users' component={Users} />
           <Route exact path='/new-user' component={CreateUser} />
+          <Route exact path='/update-user/:id' component={UpdateUser} />
         </Layout>
       </MyContext.Provider>
     </div>

@@ -7,7 +7,7 @@ import {useHistory} from "react-router-dom";
 
 const Users = () => {
   const {users} = useContext(MyContext)
-const history = useHistory()
+  const history = useHistory()
 
   const createUserClickHandler = () => {
     history.push('/new-user')
