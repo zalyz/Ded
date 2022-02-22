@@ -30,84 +30,84 @@ const App = () => {
     {
       Id: 1,
       FlightNumber: 1111,
-      ClientId: 123,
+      ClientId: 1,
       DepartureDate: new Date(2021, 2, 14),
       Price: 1000
     },
     {
       Id: 2,
       FlightNumber: 2222,
-      ClientId: 123,
+      ClientId: 1,
       DepartureDate: new Date(10, 2, 2021),
       Price: 1000
     },
     {
       Id: 3,
       FlightNumber: 3333,
-      ClientId: 123,
+      ClientId: 1,
       DepartureDate: new Date(10, 2, 2021),
       Price: 1200
     },
     {
       Id: 4,
       FlightNumber: 4444,
-      ClientId: 123,
+      ClientId: 2,
       DepartureDate: new Date(10, 2, 2021),
       Price: 300
     },
     {
       Id: 5,
       FlightNumber: 1111,
-      ClientId: 123,
+      ClientId: 2,
       DepartureDate: new Date(2021, 2, 14),
       Price: 1000
     },
     {
       Id: 6,
       FlightNumber: 2222,
-      ClientId: 123,
+      ClientId: 2,
       DepartureDate: new Date(10, 2, 2021),
       Price: 1000
     },
     {
       Id: 7,
       FlightNumber: 3333,
-      ClientId: 123,
+      ClientId: 3,
       DepartureDate: new Date(10, 2, 2021),
       Price: 1200
     },
     {
       Id: 8,
       FlightNumber: 4444,
-      ClientId: 123,
+      ClientId: 3,
       DepartureDate: new Date(10, 2, 2021),
       Price: 300
     },
     {
       Id: 9,
-      FlightNumber: 1111,
-      ClientId: 123,
+      FlightNumber: 4444,
+      ClientId: 4,
       DepartureDate: new Date(2021, 2, 14),
       Price: 1000
     },
     {
       Id: 10,
       FlightNumber: 2222,
-      ClientId: 123,
+      ClientId: 5,
       DepartureDate: new Date(10, 2, 2021),
       Price: 1000
     },
     {
       Id: 11,
       FlightNumber: 3333,
-      ClientId: 123,
+      ClientId: 5,
       DepartureDate: new Date(10, 2, 2021),
       Price: 1200
     },
     {
       Id: 12,
       FlightNumber: 4444,
-      ClientId: 123,
+      ClientId: 5,
       DepartureDate: new Date(10, 2, 2021),
       Price: 300
     }

@@ -4,7 +4,8 @@ import {MyContext} from "../../App";
 import {useHistory} from "react-router-dom";
 
 const CreateTicket = () => {
-  const {tickets, setTickets} = useContext(MyContext)
+  const {tickets, setTickets, users} = useContext(MyContext)
+  const usersId = users.map((user) => user.Id)
   const history = useHistory()
   const [formValues, setFormValues] = useState({
     FlightNumber: '',
@@ -29,11 +30,16 @@ const CreateTicket = () => {
         <h3>Create new ticket</h3>
         <div className={'input-block'}>
           <p>Flight number</p>
-          <input value={formValues.FlightNumber} onChange={(event) => setFormValues({...formValues, FlightNumber: event.target.value})} />
+          <input value={formValues.FlightNumber} required={true} onChange={(event) => setFormValues({...formValues, FlightNumber: event.target.value})} />
         </div>
         <div className={'input-block'}>
           <p>Client id</p>
-          <input value={formValues.ClientId} onChange={(event) => setFormValues({...formValues, ClientId: event.target.value})} />
+          <select onChange={(event) => setFormValues({...formValues, ClientId: event.target.value})}>
+            {usersId.map((id) => (
+              <option>{id}</option>
+              )
+            )}
+          </select>
         </div>
         <div className={'input-block'}>
           <p>Date</p>

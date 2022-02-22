@@ -39,11 +39,21 @@ const Home = () => {
     history.push('/new-ticket')
   }
 
+
+  const submitFilterHandler = (event) => {
+    event.preventDefault()
+  }
+
   return (
     <div className={'home-wrapper'}>
      <div>
        <h1>Tickets</h1>
      </div>
+      <form className={'filter-form'} onSubmit={submitFilterHandler}>
+        <input placeholder={'Flight number'} />
+        <input placeholder={'Departure time'} />
+        <button>Filter</button>
+      </form>
       <button className={'home__create-ticket'} onClick={clickCreateNewTicketButtonHandler}>Create new ticket</button>
       <div className={'home__wrapper'}>
         {tickets.map((ticket) => (

@@ -41,3 +41,8 @@ p {
   font-weight: bold;
   font-size: 18px;
 }
+
+.filter-form {
+  display: flex;
+  gap: 20px;
+}
