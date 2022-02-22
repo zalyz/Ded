@@ -18,6 +18,7 @@ import { Layout } from './components/Layout';
 import Home from './components/Home';
 import './custom.css'
 import CreateTicket from "./components/CreateTicket/CreateTicket";
+import UpdateTicket from "./components/UpdateTicket/UpdateTicket";
 
 export const MyContext = React.createContext(null);
 
@@ -117,6 +118,7 @@ const App = () => {
         <Layout>
           <Route exact path='/' component={Home} />
           <Route exact path='/new-ticket' component={CreateTicket} />
+          <Route exact path='/update-ticket/:id' component={UpdateTicket} />
         </Layout>
       </MyContext.Provider>
     </div>
