@@ -4,6 +4,7 @@ using MainProject.Interfaces;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace MainProject.Controllers
@@ -38,6 +39,24 @@ namespace MainProject.Controllers
             }
 
             return Ok(await _clientService.FindByIdAsync(id));
+        }
+
+        [HttpGet("/filter")]
+        [ProducesResponseType(typeof(IEnumerable<ClientDto>), StatusCodes.Status200OK)]
+        public async Task<IActionResult> Filter([FromQuery] string passportNumber, [FromQuery] string fullName)
+        {
+            var collection = await _clientService.GetAllAsync();
+            if (passportNumber is not null)
+            {
+                collection = collection.Where(e => e.PassportNumber.Equals(passportNumber)).ToList();
+            }
+
+            if (fullName is not null)
+            {
+                collection = collection.Where(e => e.FullName.Equals(fullName)).ToList();
+            }
+
+            return Ok(collection);
         }
 
         [HttpPost]

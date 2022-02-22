@@ -3,7 +3,9 @@ using MainProject.DTO;
 using MainProject.Interfaces;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace MainProject.Controllers
@@ -38,6 +40,24 @@ namespace MainProject.Controllers
             }
 
             return Ok(await _ticketService.FindByIdAsync(id));
+        }
+
+        [HttpGet("/filter")]
+        [ProducesResponseType(typeof(IEnumerable<TicketDto>), StatusCodes.Status200OK)]
+        public async Task<IActionResult> Filter([FromQuery]long? flightNumber, [FromQuery] DateTime? departureDateTime)
+        {
+            var collection = await _ticketService.GetAllAsync();
+            if (flightNumber.HasValue)
+            {
+                collection = collection.Where(e => e.FlightNumber == flightNumber.Value).ToList();
+            }
+
+            if (departureDateTime.HasValue)
+            {
+                collection = collection.Where(e => e.DepartureDate.Equals(departureDateTime.Value)).ToList();
+            }
+
+            return Ok(collection);
         }
 
         [HttpPost]
