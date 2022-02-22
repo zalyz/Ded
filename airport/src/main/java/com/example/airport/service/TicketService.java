@@ -31,10 +31,10 @@ public class TicketService {
                 .orElseThrow(() -> new TicketException(String.format(TICKET_EXCEPTION_MESSAGE, id)));
     }
 
-    public TicketDto save(TicketDto dto) {
+    public Long save(TicketDto dto) {
         Ticket entity = mapper.mapToTicket(dto);
         entity = repository.save(entity);
-        return mapper.mapToTicketDto(entity);
+        return entity.getId();
     }
 
     public void deleteById(Long id) {

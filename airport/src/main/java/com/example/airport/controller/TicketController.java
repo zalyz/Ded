@@ -25,7 +25,7 @@ public class TicketController {
     }
 
     @PostMapping("/save")
-    public TicketDto save(@RequestBody TicketDto dto){
+    public Long save(@RequestBody TicketDto dto){
         return service.save(dto);
     }
 
