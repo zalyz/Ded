@@ -24,7 +24,11 @@ namespace MainProject.Extensions.ClientExtensions
         {
             return new MultipartFormDataContent
             {
-                ////new { new StringContent(), nameof() },
+                { new StringContent(ticket.Id.ToString()), nameof(ticket.Id) },
+                { new StringContent(ticket.FlightNumber.ToString()), nameof(ticket.FlightNumber) },
+                { new StringContent(ticket.DepartureDate.ToString()), nameof(ticket.DepartureDate) },
+                { new StringContent(ticket.ClientId.ToString()), nameof(ticket.ClientId) },
+                { new StringContent(ticket.Price.ToString()), nameof(ticket.Price) },
             };
         }
     }

@@ -23,7 +23,9 @@ namespace MainProject.Extensions.ClientExtensions
         {
             return new MultipartFormDataContent
             {
-                ////new { new StringContent(), nameof() },
+                { new StringContent(client.PassportNumber), nameof(client.PassportNumber) },
+                { new StringContent(client.FullName), nameof(client.FullName) },
+                { new StringContent(client.Id.ToString()), nameof(client.Id) },
             };
         }
     }
