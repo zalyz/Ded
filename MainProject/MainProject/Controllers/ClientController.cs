@@ -98,10 +98,10 @@ namespace MainProject.Controllers
             return Ok();
         }
 
-        [HttpDelete]
+        [HttpDelete("{id}")]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status200OK)]
-        public async Task<IActionResult> Delete(long id)
+        public async Task<IActionResult> Delete([FromRoute]long id)
         {
             if (id <= 0)
             {
