@@ -3,6 +3,7 @@ using MainProject.DTO;
 using MainProject.Interfaces;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using RestEase;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -74,8 +75,15 @@ namespace MainProject.Controllers
                 FullName = clientModel.FullName,
                 PassportNumber = clientModel.PassportNumber,
             };
-            var id = await _clientService.CreateAsync(client);
-            return Ok(id);
+            try
+            {
+                var id = await _clientService.CreateAsync(client);
+            }
+            catch (ApiException ex)
+            {
+                return Ok();
+            }
+            return Ok();
         }
 
         [HttpPatch]

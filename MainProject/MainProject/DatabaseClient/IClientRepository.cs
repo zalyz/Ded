@@ -16,9 +16,11 @@ namespace MainProject.DatabaseClient
         Task<ClientDto> FindByIdAsync([Path] long id, CancellationToken cancellationToken = default);
 
         [Post("/client/save")]
-        Task<long> CreateAsync([Body] HttpContent context, CancellationToken cancellationToken = default);
+        [Header("Content-Type", "application/json")]
+        Task<long> CreateAsync([Body]HttpContent context, CancellationToken cancellationToken = default);
 
         [Put("/client/update")]
+        [Header("Content-Type", "application/json")]
         Task UpdateAsync([Body] HttpContent context, CancellationToken cancellationToken = default);
 
         [Delete("/client/delete/{id}")]

@@ -1,6 +1,7 @@
 ﻿using MainProject.DatabaseClient;
 using MainProject.DTO;
 using System.Net.Http;
+using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace MainProject.Extensions.ClientExtensions
@@ -19,14 +20,10 @@ namespace MainProject.Extensions.ClientExtensions
             return clientRepository.UpdateAsync(form);
         }
 
-        private static MultipartFormDataContent GetHttpContent(ClientDto client)
+        private static StringContent GetHttpContent(ClientDto client)
         {
-            return new MultipartFormDataContent
-            {
-                { new StringContent(client.PassportNumber), nameof(client.PassportNumber) },
-                { new StringContent(client.FullName), nameof(client.FullName) },
-                { new StringContent(client.Id.ToString()), nameof(client.Id) },
-            };
+            var form = new StringContent(JsonSerializer.Serialize(client));
+            return form;
         }
     }
 }
