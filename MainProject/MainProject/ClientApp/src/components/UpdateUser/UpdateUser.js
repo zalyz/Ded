@@ -13,8 +13,22 @@ const UpdateUser = () => {
     PassportNumber: currentUser.PassportNumber
   })
 
-  const submitHandler = (event) => {
+  const submitHandler = async (event) => {
     event.preventDefault()
+    const req = await fetch('https://localhost:44320/api/Client',{
+      method: 'PATCH',
+      headers: {
+        headers: {
+          'Content-Type': 'application/json;charset=utf-8'
+        },
+      },
+      body: {
+        Id: id,
+        FullName: formValues.FullName,
+        PassportNumber: formValues.PassportNumber
+      }
+    })
+
     const index = users.indexOf(currentUser)
     let copy = [...users]
     let newItem = {

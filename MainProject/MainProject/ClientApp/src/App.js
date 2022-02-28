@@ -12,7 +12,7 @@
 //   }
 // }
 
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import { Route } from 'react-router-dom';
 import { Layout } from './components/Layout';
 import Home from './components/Home';
@@ -119,6 +119,20 @@ const App = () => {
     {Id: 4, FullName: 'Kazarevich Misha', PassportNumber: 'KN123'},
     {Id: 5, FullName: 'Tanya', PassportNumber: 'KN123'}
   ])
+
+  useEffect(() => {
+    const requests = async () => {
+      const req = await fetch('https://localhost:44320/api/Ticket')
+      const newTickets = await req.json()
+
+      const userReq = await fetch('https://localhost:44320/api/Client')
+      const newUsers = await userReq.json()
+
+      setTickets(newTickets)
+      setUsers(newUsers)
+    }
+    requests()
+  }, [])
 
   return (
     <div>

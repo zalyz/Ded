@@ -11,9 +11,22 @@ const CreateUser = () => {
   })
   const history = useHistory()
 
-  const submitHandler = (event) => {
+  const submitHandler = async (event) => {
     event.preventDefault()
-    setUsers([...users, {id: Math.random(99999999 - 1) + 1,
+    const req = await fetch(`https://localhost:44320/api/Client`, {
+      method: 'POST',
+      headers: {
+        headers: {
+          'Content-Type': 'application/json;charset=utf-8'
+        },
+      },
+      body: {
+        FullName: formValues.FullName,
+        PassportNumber: formValues.PassportNumber
+      }
+    })
+    const clientId = await req.json()
+    setUsers([...users, {id: clientId,
       FullName: formValues.FullName,
       PassportNumber: formValues.PassportNumber}])
     history.push('/users')

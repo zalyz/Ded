@@ -6,7 +6,8 @@ import './UpdateTicket.styles.css'
 const UpdateTicket = () => {
   const {id} = useParams()
   const history = useHistory()
-  const {tickets, setTickets} = useContext(MyContext)
+  const {tickets, setTickets, users} = useContext(MyContext)
+  const usersId = users.map((user) => user.Id)
   const currentTicket = tickets.find((ticket) => ticket.Id.toString() === id)
   const [formValues, setFormValues] = useState({
     FlightNumber: currentTicket.FlightNumber,
@@ -15,8 +16,24 @@ const UpdateTicket = () => {
     Price: currentTicket.Price
   })
 
-  const submitHandler = (event) => {
+  const submitHandler = async (event) => {
     event.preventDefault()
+    const req = await fetch('https://localhost:44320/api/Ticket',{
+      method: 'PATCH',
+      headers: {
+        headers: {
+          'Content-Type': 'application/json;charset=utf-8'
+        },
+      },
+      body: {
+        Id: id,
+        FlightNumber: formValues.FlightNumber,
+        ClientId: formValues.ClientId,
+        DepartureDate: formValues.DepartureDate,
+        Price: formValues.Price
+      }
+    })
+
     const index = tickets.indexOf(currentTicket)
     let copy = [...tickets]
     let newItem = {
@@ -42,7 +59,11 @@ const UpdateTicket = () => {
           </div>
           <div className={'input-block'}>
             <p>Client id</p>
-            <input value={formValues.ClientId} onChange={(event) => setFormValues({...formValues, ClientId: event.target.value})} />
+            <select onChange={(event) => setFormValues({...formValues, ClientId: event.target.value})}>
+              {usersId.map((id) => (
+                <option>{id}</option>
+              ))}
+            </select>
           </div>
           <div className={'input-block'}>
             <p>Date</p>

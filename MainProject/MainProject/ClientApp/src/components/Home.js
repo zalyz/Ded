@@ -25,7 +25,7 @@
 //   }
 // }
 
-import React, {useContext} from 'react';
+import React, {useContext, useState} from 'react';
 import './Ticket/Home.styles.css'
 import Ticket from "./Ticket/Ticket";
 import {useHistory} from "react-router-dom";
@@ -33,6 +33,8 @@ import {MyContext} from "../App";
 
 const Home = () => {
   const {tickets, setTickets} = useContext(MyContext)
+  const [filterNumber, setFilterNumber] = useState('')
+  const [filterTime, setFilterTime] = useState('')
   const history = useHistory()
 
   const clickCreateNewTicketButtonHandler = () => {
@@ -40,8 +42,13 @@ const Home = () => {
   }
 
 
-  const submitFilterHandler = (event) => {
+  const submitFilterHandler = async (event) => {
     event.preventDefault()
+    console.log('test')
+    const req = await fetch(`https://localhost:44320/api/ticket/filter?flightNumber=${filterNumber}&departureDateTime=12.12.2022-09:30`)
+    const data = await req.json()
+
+    setTickets(data)
   }
 
   return (
@@ -50,8 +57,8 @@ const Home = () => {
        <h1>Tickets</h1>
      </div>
       <form className={'filter-form'} onSubmit={submitFilterHandler}>
-        <input placeholder={'Flight number'} />
-        <input placeholder={'Departure time'} />
+        <input value={filterNumber} onChange={(event) => setFilterNumber(event.target.value)} placeholder={'Flight number'} />
+        <input value={filterTime} onChange={(event) => setFilterTime(event.target.value)} type={'date'} />
         <button>Filter</button>
       </form>
       <button className={'home__create-ticket'} onClick={clickCreateNewTicketButtonHandler}>Create new ticket</button>

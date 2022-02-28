@@ -4,7 +4,14 @@ import {useHistory} from "react-router-dom";
 const Ticket = ({Id, FlightNumber, ClientId, DepartureDate, Price, tickets, setTickets}) => {
   const history = useHistory()
 
-  const clickRemoveButtonHandler = () => {
+  const clickRemoveButtonHandler = async () => {
+    const req = await fetch(`https://localhost:44320/api/Ticket/${Id}`, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json;charset=utf-8'
+      },
+    })
+
     const newArr = tickets.filter((ticket) => ticket.Id !== Id)
     setTickets(newArr)
   }
