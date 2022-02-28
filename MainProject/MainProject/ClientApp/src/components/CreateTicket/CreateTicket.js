@@ -14,9 +14,24 @@ const CreateTicket = () => {
     Price: 500
   })
 
-  const submitHandler = (event) => {
+  const submitHandler = async (event) => {
    event.preventDefault()
-    setTickets([...tickets, {id: Math.random() * (99999999 - 1) + 1,
+    const req = await fetch(`https://localhost:44320/api/Ticket`, {
+      method: 'POST',
+      headers: {
+        headers: {
+          'Content-Type': 'application/json;charset=utf-8'
+        },
+      },
+      body: {
+        FlightNumber: formValues.FlightNumber,
+        ClientId: formValues.ClientId,
+        DepartureDate: formValues.DepartureDate,
+        Price: formValues.Price
+      }
+    })
+    const ticketId = await req.json()
+    setTickets([...tickets, {id: ticketId,
       FlightNumber: formValues.FlightNumber,
       ClientId: formValues.ClientId,
       DepartureDate: formValues.DepartureDate,

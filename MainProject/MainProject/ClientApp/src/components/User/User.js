@@ -11,7 +11,14 @@ const User = ({Id, FullName, PassportNumber}) => {
     history.push(`/update-user/${Id}`)
   }
 
-  function clickRemoveButtonHandler() {
+  async function clickRemoveButtonHandler() {
+    const req = await fetch(`https://localhost:44320/api/Client/${Id}`, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json;charset=utf-8'
+      },
+    })
+
     const newArr = users.filter((user) => user.Id !== Id)
     setUsers(newArr)
   }

@@ -2,6 +2,7 @@
 using MainProject.DTO;
 using MainProject.Extensions.ClientExtensions;
 using MainProject.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -18,7 +19,8 @@ namespace MainProject.Services
 
         public Task<long> CreateAsync(ClientDto client)
         {
-            return _clientRepository.CreateAsync(client);
+            var asd = _clientRepository.CreateAsync(client);
+            return asd;
         }
 
         public Task DeleteAsync(long id)
